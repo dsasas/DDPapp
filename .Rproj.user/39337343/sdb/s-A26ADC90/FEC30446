@@ -1,0 +1,16 @@
+{
+    "contents" : "\n# This is the server logic for a Shiny web application.\n\n\nshinyServer(function(input, output, session) {\n  # Return the requested dataset\n\n  output$distPlot <- renderPlot({\n    library(ggplot2)\n    temp =  subset(morticd10, Country == input$country  & Cause == input$cause)\n\n    qplot(Year, Deaths, data = temp, color=Country, geom = \"line\", \n    main = paste0(\"Cause of Deaths: \", temp$Cause[1])[1])\n  })\n\n  datos=reactive({\n    temp =  subset(morticd10, Country == input$country  & Cause == input$cause)\n    temp1 = arrange(temp,Country, Year)\n    select(temp1, Cause, Country, Year, Deaths)\n})\n  output$view <- renderTable({\n    datos()\n})\n  output$distBoxplot <- renderPlot({\n  library(ggplot2)\n  temp2 =  subset(morticd10, Country == input$country  & Cause == input$cause)\n  \n  ggplot(temp2, aes(x = Country, y = Deaths)) + geom_boxplot()\n})\n\n\n})\n",
+    "created" : 1426607574296.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "2983399689",
+    "id" : "FEC30446",
+    "lastKnownWriteTime" : 1426936175,
+    "path" : "C:/Courseradata/DDP/DDPapp/server.R",
+    "project_path" : "server.R",
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

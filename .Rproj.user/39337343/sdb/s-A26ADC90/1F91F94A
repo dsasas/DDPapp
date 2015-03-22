@@ -1,0 +1,17 @@
+{
+    "contents" : "library(dplyr)\nlibrary(shiny)\nlibrary(markdown)\nmorticd10 <- read.csv(\"newMorticd10_s.csv\")\ncountry <- read.csv(\"country.csv\")\ncause <- read.csv(\"cause.csv\")\n\n",
+    "created" : 1426619292406.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "161943971",
+    "id" : "1F91F94A",
+    "lastKnownWriteTime" : 1426719560,
+    "path" : "C:/Courseradata/DDP/DDPapp/global.R",
+    "project_path" : "global.R",
+    "properties" : {
+        "tempName" : "Untitled1"
+    },
+    "source_on_save" : false,
+    "type" : "r_source"
+}

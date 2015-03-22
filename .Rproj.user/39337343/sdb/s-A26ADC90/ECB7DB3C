@@ -1,0 +1,16 @@
+{
+    "contents" : "<style>\n.center {\n    text-align:center;\n}\n.reveal h1, .reveal h2, .reveal h3 {\n  word-wrap: normal;\n  -moz-hyphens: none;\n  text-align:center;\n}\n.font {\n  font-size: 14px;\n}\n.small-code pre code {\n  font-size: 14px;\n}\n</style>\n\n\n\nType and amount of the leading causes of death worldwide  \n========================================================\n<div class=\"center\">\nAn application that facilitates the analysis of data on causes of deaths in the comparison between countries\n<p></p>\n<img src=\"320pxWorld_Map_Blank.png\">\n</div>\nDomingos Savio Apolonio Santos, 04/18/2015\n\nOverview\n========================================================\n\nThe app use a subset of the data from the World Health Organization (WHO) with the following features:\n\n- The app allows the user to select cause of death and countries for analysis.\n- The panel shows a line chart, a blox plot, and the table with the subset of data.\n<div class=\"center\">\n<img src=\"screen.png\">\n</div>\n\nInputs\n========================================================\n\n- The user can select one or more countries and one cause of deaths from a list:\n\n<div class=\"center\">\n<img src=\"input.JPG\">\n</div>\n\n- The app creates a subset of data with the parameters selected:\n```{r, eval=FALSE, echo=TRUE}\ntemp =  subset(morticd10, Country == input$country  & Cause == input$cause)\n```\n \n\n\nOutputs\n========================================================\nclass: small-code\nAfter the user selects the countries and cause, the application plots the line graph with the data  from selected countries, and a respective boxplot. The application also shows the respective table with the subset of the data.\n\n```{r, echo=TRUE}\nsubset <- read.csv(\"subset.csv\")\nlibrary(ggplot2); library(gridExtra)\np1 <- qplot(Year, Deaths, data = subset, color=Country, geom = \"line\", \n    main = paste0(\"Cause of Deaths: \", subset$Cause[1])[1]) + theme(legend.position = \"bottom\")  \np2 <- ggplot(subset, aes(x = Country, y = Deaths)) + geom_boxplot() \ngrid.arrange(p1, p2, ncol = 1)\n```\n\nFinal Comments\n========================================================\n- The source data do not have information for all causes and  years for some countries. Then, it was necessary to apply some filters to get the maximum of complete information.\n- It is necessary to improve the steps for the data transformation and cleaning to get more causes and countries.\n- It plans to  sdd an input to provide prediction functionalities (How many deaths may occur in a given year?).\n\n\n",
+    "created" : 1426683692688.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "4029675069",
+    "id" : "ECB7DB3C",
+    "lastKnownWriteTime" : 1427043682,
+    "path" : "C:/Courseradata/DDP/DDPpres/DDPpres.Rpres",
+    "project_path" : null,
+    "properties" : {
+    },
+    "source_on_save" : false,
+    "type" : "r_presentation"
+}
